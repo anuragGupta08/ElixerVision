@@ -7,10 +7,14 @@ from backend.routers import images, upload, duplicates, delete_duplicate
 from backend.auth import routes as auth_routes
 from backend.routers import admin
 
+# -------------------------
 # Create FastAPI app
+# -------------------------
 app = FastAPI(title="Image Duplicate Finder API")
 
+# -------------------------
 # Include routers
+# -------------------------
 app.include_router(images.router, tags=["Images"])
 app.include_router(admin.router)
 app.include_router(auth_routes.router, tags=["Auth"])
@@ -18,10 +22,13 @@ app.include_router(upload.router, prefix="/upload", tags=["Upload"])
 app.include_router(duplicates.router, prefix="/duplicates", tags=["Duplicates"])
 app.include_router(delete_duplicate.router, prefix="/duplicates", tags=["Delete Duplicates"])
 
+# -------------------------
 # CORS middleware
+# -------------------------
 origins = [
     "http://localhost:3000",  # React dev server
-    "http://127.0.0.1:3000",  # optional for local testing
+    "http://127.0.0.1:3000",  # optional local testing
+    "https://your-frontend-domain.com"  # replace with your live frontend URL
 ]
 
 app.add_middleware(
@@ -32,21 +39,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# -------------------------
 # Health check
-@app.get("/")
+# -------------------------
+@app.get("/healthz")
 def health():
     return {"status": "ok"}
 
-
 # -------------------------
-# Run app with dynamic port (Heroku compatible)
+# Run app locally (development)
+# For production, Gunicorn will use `app` directly
 # -------------------------
 if __name__ == "__main__":
     import uvicorn
-
     uvicorn.run(
         "backend.main:app",
         host="0.0.0.0",
-        port=int(os.environ.get("PORT", 8000)),  # Heroku sets PORT automatically
+        port=int(os.environ.get("PORT", 8000)),
         reload=True
     )
