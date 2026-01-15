@@ -52,6 +52,8 @@ def health():
 # -------------------------
 if __name__ == "__main__":
     import uvicorn
+    import os
+
     uvicorn.run(
         "backend.main:app",
         host="0.0.0.0",
