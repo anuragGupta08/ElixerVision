@@ -1,41 +1,12 @@
-# Core web framework
 fastapi==0.111.1
-
-# ASGI server
 uvicorn[standard]==0.23.2
-
-# WSGI server for deployment
-gunicorn==21.2.0
-
-# Database ORM
 sqlalchemy==2.0.21
-
-# Data validation
 pydantic==2.5.1
-
-# File uploads (must be >=0.0.7 for FastAPI 0.111.1)
 python-multipart==0.0.7
-
-# Password hashing
-passlib[bcrypt]>=1.7.4
-
-# JWT token handling
+passlib[bcrypt]==1.7.4
 python-jose==3.3.0
-
-# Environment variables
 python-dotenv==1.0.0
-
-# HTTP requests
 requests==2.32.0
-
-# Async file operations
 aiofiles==23.1.0
-
-# Image processing
 pillow==10.1.0
-
-# TensorFlow for your ViT model
-tensorflow==2.16.0
-
-# HuggingFace transformers
-transformers==4.41.1
+gunicorn==21.2.0
