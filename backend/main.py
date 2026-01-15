@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 # Import routers
 from backend.routers import images, upload, duplicates, delete_duplicate
@@ -35,3 +36,17 @@ app.add_middleware(
 @app.get("/")
 def health():
     return {"status": "ok"}
+
+
+# -------------------------
+# Run app with dynamic port (Heroku compatible)
+# -------------------------
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(
+        "backend.main:app",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8000)),  # Heroku sets PORT automatically
+        reload=True
+    )
