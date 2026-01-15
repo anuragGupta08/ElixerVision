@@ -1,0 +1,13 @@
+fastapi==0.111.1
+uvicorn[standard]==0.23.2
+sqlalchemy==2.0.21
+pydantic==2.5.1
+python-multipart==0.0.6       # for file uploads
+passlib[bcrypt]==1.7.5         # password hashing
+python-jose==3.3.0             # JWT tokens
+python-dotenv==1.0.0           # load env vars if needed
+requests==2.32.0               # for any backend HTTP calls
+aiofiles==23.1.0               # async file operations
+tensorflow==2.16.0             # for your ViT model
+transformers==4.41.1           # HuggingFace ViT model
+pillow==10.1.0                 # image processing
