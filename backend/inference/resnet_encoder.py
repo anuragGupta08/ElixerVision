@@ -9,7 +9,7 @@ def encode_image(img: np.ndarray):
     """
     img shape: (224, 224, 3)
     """
-    img = np.expand_dims(img * 255.0, axis=0)  # (1, 224, 224, 3)
+    img = np.expand_dims(img * 255.0, axis=0)  # (1, 224, 224, 3)   
     img = preprocess_input(img)
     embedding = model.predict(img, verbose=0)
     return embedding.flatten()
